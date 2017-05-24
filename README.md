@@ -1,10 +1,10 @@
-# api-rocola
-servidor de la rocola extreme
+# Miniponic-Pi
+Servidor y Aplicacion de Miniponic para Raspberry Pi, con controlador mqtt.
 
-## To setup
+## Para instalar
 
 `npm install`
 
-## To run
+## Para correr
 
 `npm start`

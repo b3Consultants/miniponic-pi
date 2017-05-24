@@ -2,13 +2,13 @@
 
 const app = require('./app/index').app;
 const server = require('./app/index').server;
-const Rocola = require('./app/routes/index');
+const Miniponic = require('./app/routes/index');
 
 const port = 8080;
 
-app.use('/', Rocola);
+app.use('/', Miniponic);
 
 server.listen(port, () => {
   /* eslint-disable no-console */
-  console.log(`Rocola rocking the shit out of you on port ${port}!`);
+  console.log(`Miniponic rocking the shit out of you on port ${port}!`);
 });
