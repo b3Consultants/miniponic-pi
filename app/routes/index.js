@@ -1,6 +1,5 @@
 'use strict';
 
-require('/daemons/mqtt-brain');
 const express = require('express');
 
 const router = express.Router();
