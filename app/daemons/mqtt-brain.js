@@ -57,7 +57,6 @@ function dataUploader() {
 
 // Data Message Handler
 function messageHandler() {
-  console.log('message is here');
   client.on('message', (topic, message) => {
     const id = message.toString().split('-')[0];
     const value = message.toString().split('-')[1];
