@@ -18,7 +18,7 @@ client.on('connect', () => {
 function dataAsker() {
   for (let i = 0; i < mqttConfig.TOPICS.length; i++) {
     const topic = mqttConfig.TOPICS[i];
-    console.log(`publishing to topic: ${topic}`);
+    // console.log(`publishing to topic: ${topic}`);
     client.publish(topic, 'testing');
   }
 }
@@ -33,7 +33,11 @@ function dataUploader() {
     };
     // request to database
     const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
+    console.log('Sending data...');
     axios.post(url, toDatabase)
+    .then(() => {
+      console.log('done!');
+    })
     .catch((error) => {
       winston.error = 'error';
       winston.log('error', error);
@@ -53,6 +57,7 @@ function dataUploader() {
 
 // Data Message Handler
 function messageHandler() {
+  console.log('message is here');
   client.on('message', (topic, message) => {
     const id = message.toString().split('-')[0];
     const value = message.toString().split('-')[1];
