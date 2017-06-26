@@ -18,6 +18,7 @@ client.on('connect', () => {
 function dataAsker() {
   for (let i = 0; i < mqttConfig.TOPICS.length; i++) {
     const topic = mqttConfig.TOPICS[i];
+    console.log(`publishing to topic: ${topic}`);
     client.publish(topic, 'testing');
   }
 }
