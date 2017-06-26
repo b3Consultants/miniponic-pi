@@ -12,7 +12,7 @@ const port = 8080;
 
 const app = express();
 
-mongoose.connect(database.localUrl);
+mongoose.connect(database.localUrl, { useMongoClient: true });
 app.use(metrics.middleware);
 app.use(morgan('dev'));
 app.use(metrics.middleware);
