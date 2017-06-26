@@ -31,7 +31,7 @@ function dataUploader() {
       timestamp: new Date(),
     };
     // request to database
-    const url = `http://localhost:8081/data/saveData/${miniponic.MINIPONIC_ID}`;
+    const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
     axios.post(url, toDatabase)
     .catch((error) => {
       winston.error = 'error';

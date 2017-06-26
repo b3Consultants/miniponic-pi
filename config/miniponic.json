@@ -1,3 +1,4 @@
 {
-  "MINIPONIC_ID":"MYZZERO123"
+  "MINIPONIC_ID":"MYZZERO123",
+  "SERVER":"http://localhost:8081"
 }
