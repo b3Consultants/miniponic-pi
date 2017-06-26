@@ -68,6 +68,10 @@ function messageHandler() {
 }
 
 // Run Functions
-dataAsker();
-messageHandler();
-setInterval(dataUploader, 1000);
+function run() {
+  dataAsker();
+  messageHandler();
+  setInterval(dataUploader, 1000);
+}
+
+setTimeout(run, 5000);
