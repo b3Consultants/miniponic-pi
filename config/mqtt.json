@@ -1,0 +1,5 @@
+{
+  "TOPICS":["testing","temperature","humidity"],
+  "TOPICS_RESPONSE":["testing-response","temperature-response","humidity-response"],
+  "HOST": "localhost"
+}
