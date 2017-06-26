@@ -15,6 +15,7 @@ const app = express();
 mongoose.connect(database.localUrl);
 app.use(metrics.middleware);
 app.use(morgan('dev'));
+app.use(metrics.middleware);
 
 app.get('/metrics', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
