@@ -2,6 +2,7 @@
 
 const miniponic = require('../../config/miniponic.json');
 const dataController = require('../controllers/miniponic.controller.js');
+const dataCommander = require('../comanders/miniponic.commander.js');
 const winston = require('winston');
 const mqttConfig = require('../../config/mqtt.json');
 const mqtt = require('mqtt');
@@ -19,7 +20,7 @@ function dataAsker() {
   for (let i = 0; i < mqttConfig.TOPICS.length; i++) {
     const topic = mqttConfig.TOPICS[i];
     // console.log(`publishing to topic: ${topic}`);
-    client.publish(topic, 'testing');
+    client.publish(topic, 'data');
   }
 }
 
@@ -39,36 +40,46 @@ function dataUploader() {
       console.log('done!');
     })
     .catch((error) => {
+      console.log(error);
       winston.error = 'error';
       winston.log('error', error);
     });
     dataController.dropTable()
     .catch((error) => {
+      console.log('error');
       winston.error = 'error';
       winston.log('error', error);
     });
-    dataAsker();
   })
   .catch((error) => {
     winston.error = 'error';
     winston.log('error', error);
   });
+  dataAsker();
 }
 
 // Data Message Handler
 function messageHandler() {
   console.log('Handling Messages');
   client.on('message', (topic, message) => {
-    const id = message.toString().split('-')[0];
-    const value = message.toString().split('-')[1];
-    dataController.addTempData(topic, id, value)
-    .then(() => {
-      console.log('Data Addded Correctly');
-    })
-    .catch((error) => {
-      winston.error = 'error';
-      winston.log('error', error);
-    });
+    console.log(message.toString());
+    if (message.toString() === 'alive') {
+      console.log('All sensors are alive');
+    } else {
+      const controllerName = message.toString().split(':')[0];
+      const sensorName = message.toString().split(':')[1];
+      const value = message.toString().split(':')[2];
+      dataController.addTempData(topic, controllerName, sensorName, value)
+      .catch((error) => {
+        winston.error = 'error';
+        winston.log('error', error);
+      });
+      //  ----------------------- LOGIC --------------------------
+      if (topic.split('-')[0] === 'temperature') {
+        dataCommander.temperatureController(sensorName, value, client);
+      }
+      // ---------------------------------------------------------
+    }
   });
 }
 
@@ -76,7 +87,7 @@ function messageHandler() {
 function run() {
   dataAsker();
   messageHandler();
-  setInterval(dataUploader, 1000);
+  setInterval(dataUploader, 5000);
 }
 
-setTimeout(run, 5000);
+setTimeout(run, 1000);

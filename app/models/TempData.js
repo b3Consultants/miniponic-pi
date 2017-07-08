@@ -3,7 +3,11 @@
 const mongoose = require('mongoose');
 
 module.exports = mongoose.model('tempData', {
-  id: {
+  controllerName: {
+    type: String,
+    default: '',
+  },
+  sensorName: {
     type: String,
     default: '',
   },

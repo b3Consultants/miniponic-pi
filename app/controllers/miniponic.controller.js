@@ -3,11 +3,12 @@
 const TempData = require('../models/TempData');
 
 module.exports = {
-  addTempData(topic, id, value) {
+  addTempData(topic, controllerName, sensorName, value) {
     return new Promise(
         (resolve, reject) => {
           TempData.create({
-            id,
+            controllerName,
+            sensorName,
             topic,
             value,
             timestamp: new Date(),
@@ -20,25 +21,21 @@ module.exports = {
   getTempData() {
     return new Promise(
         (resolve, reject) => {
-          const data = {};
           TempData.find({}, (error, tempdatas) => {
             if (error) reject(error);
             if (tempdatas.length !== 0) {
-              const time = new Date();
-              const lastUploadTime = tempdatas[tempdatas.length - 1].timestamp;
-              if (time - lastUploadTime > 2000) {
-                for (let i = 0; i < tempdatas.length; i++) {
-                  const tempdata = tempdatas[i];
-                  const sensor = {};
-                  sensor[tempdata.id] = tempdata.value;
-                  if (!(tempdata.topic in data)) {
-                    data[tempdata.topic] = [sensor];
-                  } else {
-                    data[tempdata.topic].push(sensor);
-                  }
-                }
-                resolve(data);
+              const datas = [];
+              for (let i = 0; i < tempdatas.length; i++) {
+                const tempdata = tempdatas[i];
+                const data = {
+                  controllerName: tempdata.controllerName,
+                  sensorName: tempdata.sensorName,
+                  topic: tempdata.topic.split('-')[0],
+                  value: tempdata.value,
+                };
+                datas.push(data);
               }
+              resolve(datas);
             }
           });
         });
