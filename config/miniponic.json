@@ -2,5 +2,5 @@
   "MINIPONIC_ID":"MYZZERO123",
   "SERVER":"http://18.231.9.226:8081",
   "NETWORK":{ "temperature":2, "humidity":2, "luminosity":2 },
-  "PARAMETERS":{"temperature_for_fan_on": 35,"temperature_for_fan_off":30, "temperature_for_heater_on": 20, "temperature_for_heater_off": 25}
+  "PARAMETERS":{"temperature_for_fan_on": 35,"temperature_for_fan_off":31, "temperature_for_heater_on": 20, "temperature_for_heater_off": 25}
 }
