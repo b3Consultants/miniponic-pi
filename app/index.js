@@ -1,13 +1,6 @@
 'use strict';
 
-require('./daemons/mqtt-brain.js');
-const express = require('express');
+const brain = require('./brain');
 
-const router = express.Router();
-
-/* GET home page. */
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
+console.log('Starting to think...');
+brain.start();

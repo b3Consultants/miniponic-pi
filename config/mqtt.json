@@ -1,5 +1,17 @@
 {
-  "TOPICS":["temperature","humidity","luminosity", "status"],
-  "TOPICS_RESPONSE":["conexions", "testing-response", "temperature-response","humidity-response","luminosity-response","status-response"],
-  "HOST": "localhost"
+  "TOPICS":[
+    "temperature",
+    "humidity",
+    "luminosity",
+    "status"
+  ],
+  "TOPICS_RESPONSE":[
+    "conexions",
+    "testing-response",
+    "temperature-response",
+    "humidity-response",
+    "luminosity-response",
+    "status-response"
+  ],
+  "HOST": "192.168.0.107"
 }
