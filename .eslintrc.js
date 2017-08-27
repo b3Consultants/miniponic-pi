@@ -13,6 +13,7 @@ module.exports = {
     'strict': ['error', 'safe'],
     'no-await-in-loop': 'off',
     'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
-    'no-unused-expressions': ['error', { 'allowTernary': true }]
+    'no-unused-expressions': ['error', { 'allowTernary': true }],
+    'linebreak-style': [0, "windows"]
   },
 };
