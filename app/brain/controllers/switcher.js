@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Switcher
+ * @module Switcher
+ */
+
 const parameters = require('../../../config/parameters.json');
 
 /** Resolves the on or off of a device calculating the average value of the sensors

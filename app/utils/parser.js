@@ -2,6 +2,11 @@
 
 // Parse incoming messages with "clientId":"sensorName":"data"
 
+/**
+ * Parser.
+ * @module Parser
+ */
+
 /** Parse the incoming data into a data Object
 * @param {String} message - incoming data message.
 * @param {String} topic - message topic.

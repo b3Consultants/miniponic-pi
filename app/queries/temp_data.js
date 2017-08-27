@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Queries.
+ * @module Queries
+ */
+
 const storage = global.storage;
 
 /** Adds a new data into the storage.
@@ -15,7 +20,6 @@ function add(data) {
 function get() {
   return storage.get();
 }
-
 
 /** Clears the storage.
 */

@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Ambient Controller.
+ * @module Ambient
+ */
+
 const parser = require('../../utils/parser');
 const turn = require('./switcher').turn;
 const mqtt = require('../../daemons/mqtt');

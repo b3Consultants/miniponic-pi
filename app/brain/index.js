@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Brain.
+ * @module Brain
+ */
+
 const mqtt = require('../daemons/mqtt');
 const tempData = require('../queries/temp_data');
 const ambient = require('./controllers/ambient');

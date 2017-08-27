@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Comunications.
+ * @module Comunications
+ */
+
 const axios = require('axios');
 const miniponic = require('../../config/miniponic.json');
 

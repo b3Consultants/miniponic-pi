@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * MQTT.
+ * @module MQTT
+ */
+
 const mqtt = require('mqtt');
 const mqttConfig = require('../../config/mqtt.json');
 const tempdata = require('../queries/temp_data');
