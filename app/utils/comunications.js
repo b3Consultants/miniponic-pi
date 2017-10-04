@@ -21,7 +21,7 @@ function upload(data) {
     const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
     axios.post(url, toDatabase)
     .then(() => {
-      console.log(toDatabase);
+      console.log('Success!');
     })
     .catch((error) => {
       console.log(error);
