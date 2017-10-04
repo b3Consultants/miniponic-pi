@@ -37,7 +37,6 @@ function process() {
   takePicture()
     .then((photo) => {
       data.photo = photo;
-      console.log(photo);
       think(data);
     })
     .catch((error) => {

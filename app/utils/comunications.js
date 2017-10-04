@@ -17,7 +17,7 @@ function upload(data) {
     data,
     timestamp: new Date(),
   };
-  if (Object.keys(toDatabase).length === 0) {
+  if (Object.keys(toDatabase.data).length !== 0) {
     const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
     axios.post(url, toDatabase)
     .then(() => {
