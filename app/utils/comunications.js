@@ -17,13 +17,16 @@ function upload(data) {
     data,
     timestamp: new Date(),
   };
-  console.log(toDatabase);
-  const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
-  console.log('Sending data...');
-  axios.post(url, toDatabase)
-  .catch((error) => {
-    console.log(error);
-  });
+  if (Object.keys(toDatabase).length === 0) {
+    const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
+    axios.post(url, toDatabase)
+    .then(() => {
+      console.log(toDatabase);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 }
 
 module.exports = {
