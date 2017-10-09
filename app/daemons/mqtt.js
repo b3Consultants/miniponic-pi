@@ -37,7 +37,6 @@ function handleMessages() {
     const rawMessage = incomingMessage.toString();
     const message = parse(rawMessage, topic);
     tempdata.add(message);
-    console.log(tempdata.get());
   });
 }
 

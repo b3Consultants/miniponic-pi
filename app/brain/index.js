@@ -34,6 +34,7 @@ function think(data) {
 */
 function process() {
   const data = parser.clean(tempData.get());
+  console.log(data);
   takePicture()
     .then((photo) => {
       data.photo = photo;
