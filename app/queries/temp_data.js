@@ -1,11 +1,13 @@
 'use strict';
 
+const Storage = require('../utils/storage').storage;
+
 /**
  * Queries.
  * @module Queries
  */
 
-const storage = global.storage;
+const storage = new Storage();
 
 /** Adds a new data into the storage.
 * @param {Object} data - miniponic data.

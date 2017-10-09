@@ -39,8 +39,7 @@ function process() {
       data.photo = photo;
       think(data);
     })
-    .catch((error) => {
-      console.log(error);
+    .catch(() => {
       think(data);
     });
 }

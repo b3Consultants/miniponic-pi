@@ -1,16 +1,11 @@
 'use strict';
 
-const Storage = require('./app/utils/storage').storage;
 const http = require('http');
 const express = require('express');
-
-global.storage = new Storage();
 
 const port = 8080;
 
 const app = express();
-
-global.storage = new Storage();
 
 const server = http.createServer(app);
 
