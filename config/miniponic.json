@@ -1,6 +1,6 @@
 {
   "MINIPONIC_ID":"MYZZERO123",
   "SERVER":"http://54.233.111.21:8082",
-  "SENDINGTIME": 300000,
+  "SENDINGTIME": 1800000,
   "PHOTO_CALL":"http://admin:ZDc5OGZkNzk4Zg==@192.168.1.13:8080/stream/snapshot.jpg"
 }
