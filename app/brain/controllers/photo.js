@@ -1,22 +1,14 @@
 'use strict';
 
-const axios = require('axios');
+const i2b = require('imageurl-base64');
 const miniponic = require('../../../config/miniponic.json');
 
 function takePicture() {
-  return new Promise((resolve) => {
-    //resolve('photo');
-    axios.get(
-      miniponic.PHOTO_CALL,
-      { responseType: 'arraybuffer', timeout: 60000, maxContentLength: 20000000 },
-    )
-    .then((response) => {
-      //const photo = new Buffer(response.data, 'binary').toString('base64');
-      const photo = response.data
+  return new Promise((resolve, reject) => {
+    // resolve('photo');
+    i2b(miniponic.PHOTO_CALL, (error, photo) => {
+      if (error) reject(error);
       resolve(photo);
-    })
-    .catch((error) => {
-      reject(error);
     });
   });
 }
