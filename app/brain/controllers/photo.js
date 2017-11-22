@@ -11,7 +11,8 @@ function takePicture() {
       { responseType: 'arraybuffer' },
     )
     .then((response) => {
-      const photo = new Buffer(response.data, 'binary').toString('base64');
+      //const photo = new Buffer(response.data, 'binary').toString('base64');
+      const photo = response.data
       resolve(photo);
     })
     .catch((error) => {
