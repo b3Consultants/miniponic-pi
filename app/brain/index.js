@@ -40,10 +40,6 @@ function process() {
       data.photo = photo;
       think(data);
     })
-    .catch((error) => {
-      console.log(error)
-      think(data);
-    });
 }
 
 /** Starts the brain, connecting the mqtt server amd running it. Then Starts
