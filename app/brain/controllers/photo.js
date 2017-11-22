@@ -8,7 +8,7 @@ function takePicture() {
     // resolve('photo');
     i2b(miniponic.PHOTO_CALL, (error, photo) => {
       console.log(error);
-      console.log(phoyo);
+      console.log(photo);
       if (error) reject(error);
       resolve(photo);
     });
