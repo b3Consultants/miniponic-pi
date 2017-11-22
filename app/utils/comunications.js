@@ -23,8 +23,8 @@ function upload(data) {
     .then(() => {
       console.log('Success!');
     })
-    .catch(() => {
-      console.log('error');
+    .catch((error) => {
+      console.log(error);
     });
   }
 }
