@@ -8,7 +8,7 @@ function takePicture() {
     //resolve('photo');
     axios.get(
       miniponic.PHOTO_CALL,
-      { responseType: 'arraybuffer' },
+      { responseType: 'arraybuffer', timeout: 60000, maxContentLength: 20000000 },
     )
     .then((response) => {
       //const photo = new Buffer(response.data, 'binary').toString('base64');
