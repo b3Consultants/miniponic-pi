@@ -40,7 +40,8 @@ function process() {
       data.photo = photo;
       think(data);
     })
-    .catch(() => {
+    .catch((error) => {
+      console.log(error)
       think(data);
     });
 }
