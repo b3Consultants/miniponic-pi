@@ -7,7 +7,7 @@ function takePicture() {
   return new Promise((resolve, reject) => {
     // resolve('photo');
     i2b(miniponic.PHOTO_CALL, (error, photo) => {
-      if (error) reject(error);
+      if (error) resolve(error);
       resolve(photo.base64);
     });
   });
