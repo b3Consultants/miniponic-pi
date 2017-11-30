@@ -24,7 +24,7 @@ function upload(data) {
       console.log('Success!');
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error.statusMessage);
     });
   }
 }
