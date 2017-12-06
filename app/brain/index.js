@@ -34,12 +34,11 @@ function think(data) {
 */
 function process() {
   const data = parser.clean(tempData.get());
-  //console.log(data);
   takePicture()
-    .then((photo) => {
-      data.photo = photo;
-      think(data);
+    .catch((error) => {
+      console.log(error);
     })
+  think(data);
 }
 
 /** Starts the brain, connecting the mqtt server amd running it. Then Starts
