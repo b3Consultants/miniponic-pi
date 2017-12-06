@@ -13,7 +13,7 @@ function takePicture() {
 
       axios.post(url, { photo: photo.base64 })
         .catch((err) => {
-          console.log(err.statusMessage);
+          console.log(err);
         });
     });
   });
