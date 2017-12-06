@@ -4,6 +4,8 @@ const i2b = require('imageurl-base64');
 const miniponic = require('../../../config/miniponic.json');
 const axios = require('axios');
 
+const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
+
 function takePicture() {
   return new Promise((resolve, reject) => {
     i2b(miniponic.PHOTO_CALL, (error, photo) => {
@@ -13,7 +15,8 @@ function takePicture() {
         .catch((err) => {
           console.log(err.statusMessage);
         });
-   });
+    });
+  });
 }
 
 module.exports = takePicture;
