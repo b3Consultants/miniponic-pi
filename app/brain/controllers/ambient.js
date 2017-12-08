@@ -5,9 +5,8 @@
  * @module Ambient
  */
 
-const parser = require('../../utils/parser');
 const turn = require('./switcher').turn;
-const mqtt = require('../../daemons/mqtt');
+const serialport = require('../../daemons/serialPort');
 
 const cooler = 'fan';
 const heater = 'heater';
@@ -16,10 +15,10 @@ const heater = 'heater';
 * @param {Object} data - miniponic sensor data.
 */
 function control(data) {
-  if (data.temperature) {
-    const temperatures = parser.extractValues(data.temperature);
-    mqtt.publish(cooler, turn(cooler, temperatures));
-    mqtt.publish(heater, turn(heater, temperatures));
+  if (data) {
+    const temperatures = data.temperature;
+    serialport.publish(`${cooler}-${turn(cooler, temperatures)}`);
+    serialport.publish(`${heater}-${turn(heater, temperatures)}`);
   }
 }
 

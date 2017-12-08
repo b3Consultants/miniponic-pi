@@ -1,6 +1,6 @@
 {
   "name": "miniponic-pi",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "main": "app.js",
   "scripts": {
@@ -8,17 +8,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "axios": "^0.16.2",
-    "body-parser": "~1.17.1",
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.3",
-    "express": "~4.15.2",
-    "express-node-metrics": "^1.4.0",
+    "axios": "^0.17.1",
     "imageurl-base64": "^1.0.0",
     "jsdoc": "^3.5.4",
-    "mongoose": "^4.11.8",
-    "morgan": "~1.8.1",
-    "mqtt": "^2.7.2"
+    "serialport": "^6.0.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",

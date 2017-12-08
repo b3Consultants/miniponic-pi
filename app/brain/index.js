@@ -5,7 +5,7 @@
  * @module Brain
  */
 
-const mqtt = require('../daemons/mqtt');
+const serialport = require('../daemons/serialPort');
 const tempData = require('../queries/temp_data');
 const ambient = require('./controllers/ambient');
 const parser = require('../utils/parser');
@@ -26,18 +26,15 @@ function think(data) {
   ambient.control(data);
   // End of thinking part
   save(data);
-  mqtt.ask();
+  serialport.ask();
 }
 
 /** Process, think, commands miniponic data. This function is in charge of
 * controlling the miniponic sensors and devices.
 */
 function process() {
-  const data = parser.clean(tempData.get());
-  takePicture()
-    .catch((error) => {
-      console.log(error);
-    })
+  const data = tempData.get();
+  takePicture();
   think(data);
 }
 
@@ -45,8 +42,8 @@ function process() {
 * a heartbeat asking for processing and asking for more data.
 */
 function start() {
-  mqtt.connect();
-  mqtt.run();
+  serialport.connect();
+  serialport.run();
   setInterval(process, miniponic.SENDINGTIME);
 }
 

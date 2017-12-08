@@ -4,13 +4,13 @@ class Storage {
   /** Class constructor.
   */
   constructor() {
-    this.store = [];
+    this.store = null;
   }
 
   /** Clears the storage.
   */
   clear() {
-    this.store = [];
+    this.store = null;
   }
 
   /** Returns all the data in the storage.
@@ -24,7 +24,7 @@ class Storage {
   * @param {Object} data - miniponic data.
   */
   set(value) {
-    this.store.push(value);
+    this.store = value;
   }
 
 }

@@ -17,14 +17,14 @@ function upload(data) {
     data,
     timestamp: new Date(),
   };
-  if (Object.keys(toDatabase.data).length !== 0) {
-    const url = `${miniponic.SERVER}/data/saveData/${miniponic.MINIPONIC_ID}`;
+  if (toDatabase.data) {
+    const url = `${miniponic.SERVER}/data/savData/${miniponic.MINIPONIC_ID}`;
     axios.post(url, toDatabase)
     .then(() => {
       console.log('Success!');
     })
     .catch((error) => {
-      console.log(error.statusMessage);
+      console.log(error.response.status, error.response.statusText);
     });
   }
 }

@@ -1,6 +1,18 @@
 'use strict';
 
-// Parse incoming messages with "clientId":"sensorName":"data"
+// Parse incoming messages with:
+// [
+//   temperature1,
+//   temperature2,
+//   humidity1,
+//   humidity2,
+//   luminosity,
+//   fan,
+//   heater,
+//   weight,
+//   moisture1,
+//   moisture2
+// ]
 
 /**
  * Parser.
@@ -12,48 +24,15 @@
 * @param {String} topic - message topic.
 * @return {Object} with clientId, sensorName, value and topic as keys
 */
-function parse(message, topic) {
-  const messageArray = message.split(':');
+function parse(message) {
+  const array = message.split(';');
   return {
-    clientId: messageArray[0],
-    sensorName: messageArray[1],
-    value: messageArray[2],
-    topic: topic.split('-')[0],
+    temperature: [parseFloat(array[0], 10), parseFloat(array[1], 10)],
+    humidity: [parseFloat(array[2], 10), parseFloat(array[3], 10)],
+    luminosity: [parseFloat(array[4], 10)],
   };
-}
-
-/** Cleans the storage data array into an object of topics and its corresponding values.
-* @param {Array} array - array of miniponic data.
-* @return {Object} miniponic organized data.
-*/
-function clean(array) {
-  const cleanedData = {};
-  for (let i = 0; i < array.length; i++) {
-    const data = array[i];
-    const topic = data.topic;
-    if (!cleanedData[topic]) {
-      cleanedData[topic] = [data];
-    } else {
-      cleanedData[topic].push(data);
-    }
-  }
-  return cleanedData;
-}
-
-/** Extracts only the values for a certain topic.
-* @param {Array} array - array of miniponic data.
-* @return {Array} of topic values.
-*/
-function extractValues(array) {
-  const values = [];
-  for (let i = 0; i < array.length; i++) {
-    values.push(array[i].value);
-  }
-  return values;
 }
 
 module.exports = {
   parse,
-  clean,
-  extractValues,
 };
